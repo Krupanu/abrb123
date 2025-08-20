@@ -5,7 +5,7 @@ from .models import FormSubmission
 
 class DynamicFormView(View):
     def get(self, request):
-        return render(request, 'formapp/form.html')
+        return render(request, 'form_app/form.html')
 
 
 class FormSubmitView(View):
@@ -24,4 +24,4 @@ class FormSubmitView(View):
 class DataListView(View):
     def get(self, request):
         submissions = FormSubmission.objects.all()
-        return render(request, 'formapp/list.html', {'submissions': submissions})
+        return render(request, 'form_app/list.html', {'submissions': submissions})

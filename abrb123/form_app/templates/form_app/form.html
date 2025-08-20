@@ -4,12 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Динамическая форма</title>
-
-    <link rel="stylesheet" href="{% static 'css/form.css' %}">
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <script src="{% static 'js/form.js' %}"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .field-wrapper {
+            margin-bottom: 15px;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button {
+            padding: 8px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        #add-field {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #add-field:hover {
+            background-color: #45a049;
+        }
+        button[type="submit"] {
+            background-color: #008CBA;
+            color: white;
+        }
+        button[type="submit"]:hover {
+            background-color: #007399;
+        }
+        .remove-field {
+            background-color: #f44336;
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+        }
+        .remove-field:hover {
+            background-color: #da190b;
+        }
+        .button-group {
+            margin-top: 20px;
+        }
+        a {
+            color: #008CBA;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <h1>Динамическая форма</h1>
@@ -26,5 +83,26 @@
         </div>
     </form>
     <p><a href="{% url 'list' %}">Посмотреть сохраненные данные</a></p>
+
+    <script>
+    $(document).ready(function() {
+        let fieldCount = 1;
+
+        $('#add-field').click(function() {
+            const newField = `
+                <div class="field-wrapper">
+                    <input type="text" name="name${fieldCount}" placeholder="Введите имя">
+                    <button type="button" class="remove-field">Удалить</button>
+                </div>
+            `;
+            $('#fields-container').append(newField);
+            fieldCount++;
+        });
+
+        $(document).on('click', '.remove-field', function() {
+            $(this).parent().remove();
+        });
+    });
+    </script>
 </body>
 </html>
