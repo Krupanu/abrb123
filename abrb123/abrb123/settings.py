@@ -73,10 +73,9 @@ WSGI_APPLICATION = 'abrb123.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default='postgresql://myproject_user:myproject_pass@localhost:5432/myproject_db'
+    )
 }
 
 
