@@ -1,6 +1,6 @@
 $(document).ready(function() {
     let fieldCount = 1;
-    
+
     $('#add-field').click(function() {
         const newField = `
             <div class="field-wrapper">
@@ -11,7 +11,7 @@ $(document).ready(function() {
         $('#fields-container').append(newField);
         fieldCount++;
     });
-    
+
     $(document).on('click', '.remove-field', function() {
         $(this).parent().remove();
     });
