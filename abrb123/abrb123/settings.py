@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
+import dj_database_url
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -37,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'form_app',
 ]
 
 MIDDLEWARE = [
@@ -74,7 +77,7 @@ WSGI_APPLICATION = 'abrb123.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://myproject_user:myproject_pass@localhost:5432/myproject_db'
+        default='postgresql://user:123@localhost:5432/postgres_db'
     )
 }
 
