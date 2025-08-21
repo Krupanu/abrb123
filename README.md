@@ -21,6 +21,15 @@ docker-compose up -d
 
 Миграции применятся автоматически при первом запуске.
 
+Если запускается на macOS, то перед 
+```bash
+docker-compose up -d
+```
+Нужно выполнить 
+```bash
+chmod +x entrypoint.sh
+```
+
 ### 3. Создание суперпользователя (опционально)
 ```bash
 docker-compose exec web python manage.py createsuperuser
